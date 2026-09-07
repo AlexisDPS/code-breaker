@@ -15,7 +15,10 @@ def generate_code():
 
 
 def get_guess():
-    pass
+    guess = []
+    for i in range(4):
+        guess.append(check_input.get_int_range(f"- Enter digit {i + 1}: ", 1, 6))
+    return guess
 
 
 
