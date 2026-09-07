@@ -8,7 +8,10 @@ import check_input
 
 
 def generate_code():
-    pass
+    code = []
+    for i in range(4):
+        code.append(random.randint(1, 6))
+    return code
 
 
 def get_guess():
