@@ -23,7 +23,15 @@ def get_guess():
 
 
 def check_guess(code, guess):
-    pass
+    exact_matches = 0
+    misplaced_matches = 0
+    for i in range(4):
+        if code[i] == guess[i]:
+            exact_matches += 1
+        if guess[i] in code and code[i] != guess[i]:
+            misplaced_matches += 1
+    return [exact_matches, misplaced_matches]
+        
 
 
 def display_results(results):
