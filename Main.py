@@ -41,6 +41,21 @@ def display_results(results):
 
 
 def main():
-    pass
+    computers_code = generate_code()
+    in_game = True
+    attempt_number = 0
+    while in_game:
+        for i in range(8):
+            attempt_number += 1
+            print(f"Attempt number: {attempt_number}:")
+            guess = get_guess()
+            results = check_guess(computers_code, guess)
+            display_results(results)
+            if results[0] == 4:
+                print("You cracked the code!")
+                in_game = False
+                break
+
+
 
 main()
