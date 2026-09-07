@@ -35,7 +35,8 @@ def check_guess(code, guess):
 
 
 def display_results(results):
-    pass
+    print(f"Exact matches: {results[0]}")
+    print(f"Misplaced matches: {results[1]}")
 
 
 
