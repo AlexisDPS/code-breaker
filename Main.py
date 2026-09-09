@@ -25,11 +25,19 @@ def get_guess():
 def check_guess(code, guess):
     exact_matches = 0
     misplaced_matches = 0
+    unmatched_code = []
+    unmatched_guess = []
     for i in range(4):
         if code[i] == guess[i]:
             exact_matches += 1
-        if guess[i] in code and code[i] != guess[i]:
-            misplaced_matches += 1
+        else:
+            unmatched_code.append(code[i])
+            unmatched_guess.append(guess[i])
+    if len(unmatched_code) > 0:
+        for num in unmatched_guess:
+            if num in unmatched_code:
+                unmatched_code.remove(num)
+                misplaced_matches += 1
     return [exact_matches, misplaced_matches]
         
 
@@ -42,6 +50,7 @@ def display_results(results):
 
 def main():
     computers_code = generate_code()
+    print(f"the code is: {computers_code}")
     in_game = True
     attempt_number = 0
     print("--Code Breaker!--")
