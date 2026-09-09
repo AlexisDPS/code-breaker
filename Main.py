@@ -23,7 +23,8 @@ def get_guess():
         new_digit = check_input.get_int_range(f"- Enter digit {i + 1}: ", 1, 6)
         while new_digit in guess:
             print("Invalid input - cannot enter a duplicate value.")
-        guess.append(check_input.get_int_range(f"- Enter digit {i + 1}: ", 1, 6))
+            new_digit = check_input.get_int_range(f"- Enter digit {i + 1}: ", 1, 6)
+        guess.append(new_digit)
     return guess
 
 
