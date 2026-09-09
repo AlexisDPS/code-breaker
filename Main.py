@@ -43,19 +43,18 @@ def check_guess(code, guess):
 
 
 def display_results(results):
-    print(f"Exact matches: {results[0]}")
-    print(f"Misplaced matches: {results[1]}")
+    print("Results:")
+    print(f"- Exact matches: {results[0]}")
+    print(f"- Misplaced matches: {results[1]}")
 
 
 
 def main():
     computers_code = generate_code()
-    print(f"the code is: {computers_code}")
     in_game = True
     attempt_number = 0
     print("--Code Breaker!--")
-    print("Crack the 4-digit code within 8")
-    print("attempts to open the safe.")
+    print("Crack the 4-digit code within 8 attempts to open the safe.")
     print("Each digit is between 1-6.")
     print()
     while in_game:
@@ -65,11 +64,14 @@ def main():
             print(f"Attempt #{attempt_number}")
             guess = get_guess()
             results = check_guess(computers_code, guess)
+            print(f"Your guess: {guess}")
             display_results(results)
             if results[0] == 4:
                 won = True
-                print("You cracked the code!")
+                print()
+                print("You have cracked the code!")
                 in_game = False
+            print()
         if not won:
             print(f"The correct code was: {computers_code}")
             print("You lost.")
