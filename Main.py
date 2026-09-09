@@ -10,13 +10,19 @@ import check_input
 def generate_code():
     code = []
     for i in range(4):
-        code.append(random.randint(1, 6))
+        new_digit = random.randint(1, 6)
+        while new_digit in code:
+            new_digit = random.randint(1, 6)
+        code.append(new_digit)
     return code
 
 
 def get_guess():
     guess = []
     for i in range(4):
+        new_digit = check_input.get_int_range(f"- Enter digit {i + 1}: ", 1, 6)
+        while new_digit in guess:
+            print("Invalid input - cannot enter a duplicate value.")
         guess.append(check_input.get_int_range(f"- Enter digit {i + 1}: ", 1, 6))
     return guess
 
@@ -25,18 +31,11 @@ def get_guess():
 def check_guess(code, guess):
     exact_matches = 0
     misplaced_matches = 0
-    unmatched_code = []
-    unmatched_guess = []
     for i in range(4):
         if code[i] == guess[i]:
             exact_matches += 1
         else:
-            unmatched_code.append(code[i])
-            unmatched_guess.append(guess[i])
-    if len(unmatched_code) > 0:
-        for num in unmatched_guess:
-            if num in unmatched_code:
-                unmatched_code.remove(num)
+            if guess[i] in code:
                 misplaced_matches += 1
     return [exact_matches, misplaced_matches]
         
@@ -62,7 +61,7 @@ def main():
         won = False
         for i in range(8):
             attempt_number += 1
-            print(f"Attempt number: {attempt_number}")
+            print(f"Attempt #{attempt_number}")
             guess = get_guess()
             results = check_guess(computers_code, guess)
             display_results(results)
