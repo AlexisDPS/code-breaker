@@ -1,11 +1,13 @@
-
-
-
-
+# Group 10
+# Broden Black
+# Alexis De Paz Salazar
+# This lab is a code breaking game where the user gets 8 chances to guess a 4-digit code. There are no duplicate numbers in the code and each number is between 1 and 6. Each attempt gives the user feedback and if the code is guessed in the 8 attempts, the user wins.
 
 import random
 import check_input
 
+# TODO: Add docstrings to all functions. Document all parameters and return values.
+# TODO: Add brief comments (# style) within your functions to describe sections of code.
 
 def generate_code():
     code = []
@@ -59,7 +61,7 @@ def main():
     print()
     while in_game:
         won = False
-        for i in range(8):
+        while attempt_number < 8 and not won:  # TODO: doesn't quit after winning
             attempt_number += 1
             print(f"Attempt #{attempt_number}")
             guess = get_guess()
@@ -70,7 +72,6 @@ def main():
                 won = True
                 print()
                 print("You have cracked the code!")
-                in_game = False
             print()
         if not won:
             print(f"The correct code was: {computers_code}")
