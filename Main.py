@@ -44,17 +44,27 @@ def main():
     computers_code = generate_code()
     in_game = True
     attempt_number = 0
+    print("--Code Breaker!--")
+    print("Crack the 4-digit code within 8")
+    print("attempts to open the safe.")
+    print("Each digit is between 1-6.")
+    print()
     while in_game:
+        won = False
         for i in range(8):
             attempt_number += 1
-            print(f"Attempt number: {attempt_number}:")
+            print(f"Attempt number: {attempt_number}")
             guess = get_guess()
             results = check_guess(computers_code, guess)
             display_results(results)
             if results[0] == 4:
+                won = True
                 print("You cracked the code!")
                 in_game = False
-                break
+        if not won:
+            print(f"The correct code was: {computers_code}")
+            print("You lost.")
+            in_game = False
 
 
 
